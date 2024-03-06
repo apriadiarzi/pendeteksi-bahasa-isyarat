@@ -57,6 +57,6 @@ with col1:
         video_frame_callback=video_frame_callback,
         # audio_frame_callback=audio_frame_callback,
         rtc_configuration={"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]},  # Add this to config for cloud deployment.
-        media_stream_constraints={"video": {"height": {"ideal": 480}}, "audio": True},
-        video_html_attrs=VideoHTMLAttributes(autoPlay=True, controls=False, muted=False),
+        media_stream_constraints={"video": {"height": {"ideal": 480}}, "audio": False},
+        video_html_attrs=VideoHTMLAttributes(autoPlay=True, controls=False, muted=True),
     )
