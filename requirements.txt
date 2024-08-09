@@ -1,10 +1,10 @@
-cryptography==38.0.0
+cryptography
 pyOpenSSL
 aiortc
 numpy
 pydub
 mediapipe
 streamlit
-streamlit_webrtc==0.43.4
-streamlit-nested-layout==0.1.1
+streamlit_webrtc
+streamlit-nested-layout
 tensorflow
