@@ -9,7 +9,7 @@ from tensorflow import keras
 import cv2
 import numpy as np
 
-model = keras.models.load_model('model/SIBI_ASL_Keras2.h5')
+model = keras.models.load_model('model/SIBI_ASL_Keras2.h5', compile = False)
 
 class_names = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y']
 
@@ -28,7 +28,7 @@ st.set_page_config(
 col1, col2 = st.columns(spec=[6, 2], gap="medium")
 
 
-def video_frame_callback(frame: av.VideoFrame):
+def callback(frame: av.VideoFrame):
     frame = frame.to_ndarray(format="bgr24")  # Decode and convert frame to RGB
     cv2.rectangle(frame, (x1, y1), (x2, y2), color, thickness)
 
@@ -54,7 +54,7 @@ def video_frame_callback(frame: av.VideoFrame):
 with col1:
     ctx = webrtc_streamer(
         key="drowsiness-detection",
-        video_frame_callback=video_frame_callback,
+        video_frame_callback=callback,
         # audio_frame_callback=audio_frame_callback,
         rtc_configuration={"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]},  # Add this to config for cloud deployment.
         media_stream_constraints={"video": {"height": {"ideal": 480}}, "audio": False},
